@@ -1,0 +1,54 @@
+<!-- TODO: call (pan)="dragPlayer($event)" when dragging bug is fixed: https://github.com/driftyco/ionic/issues/5767 -->
+<div [style.top]="-viewHeight" [ngStyle]="{'transform': 'translate3d(0px, '+deltaY+'px, 0px)'}">
+    <div tappable (click)="togglePlayerVisibility()">
+        <div class="elapsed-container">
+            <div [style.width]="percentLoaded+'%'" class="percent-loaded"></div>
+            <div [style.width]="percentElapsed+'%'" class="percent-elapsed"></div>
+        </div>
+        <ion-toolbar>
+            <div style="display: flex;" class="">
+                <div style="width: 50px;">
+                    <button [disabled]="playerStatus === 'loading'" style="border-radius: 40px; width: 40px; height: 40px;" (click)="toggleAudio($event)">
+                        <ion-icon *ngIf="playerStatus === 'paused'" name="play"></ion-icon>
+                        <ion-icon *ngIf="playerStatus === 'playing'" name="pause"></ion-icon>
+                        <ion-spinner *ngIf="playerStatus === 'loading'"></ion-spinner>
+                    </button>
+                </div>
+                <div style="width: 100%; padding: 5px;">
+                    {{currentTrack.title}} 
+                </div>
+            </div>
+        </ion-toolbar>
+    </div>
+    <div [style.height]="viewHeight+'px'" style="width: 100%; background-color: #fff;   ">
+        <div [style.top]="viewheight" style="position: absolute; right: 0;">
+            <button clear dark>
+                <ion-icon name="list"></ion-icon>
+            </button>
+            <button clear dark (click)="closePlayer(0)">
+                <ion-icon ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle"></ion-icon>
+            </button>
+        </div>
+    
+            <img [src]="currentTrack.image" width="100%" />
+            <div padding>
+                <h2>{{currentTrack.title}}</h2>
+            </div>
+
+        <div class="controls-container">
+            <div padding>
+                <ion-range min="0" max="100" (ionChange)="seekAudio($event)" [(ngModel)]="percentElapsed"></ion-range>
+            </div>
+            <div>
+                <div padding>
+                    <span>{{timeElapsed}}</span><span style="float: right">{{timeRemaining}}</span>
+                </div>
+                <button fab fab-bottom fab-center (click)="toggleAudio($event)" [disabled]="getPlayerStatus === 'loading'">
+                    <ion-icon *ngIf="playerStatus === 'paused'" name="play"></ion-icon>
+                    <ion-icon *ngIf="playerStatus === 'playing'" name="pause"></ion-icon>
+                    <ion-spinner *ngIf="playerStatus === 'loading'" style="fill: #fff;"></ion-spinner>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

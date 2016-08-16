@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Latest Stories
+    </ion-title>
+      <ion-buttons *ngIf="playlist" end>
+        <button (click)="startPlaylist(playlist[0])" primary>Play all</button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="about">
+  <ion-list>
+    <ion-item tappable *ngFor="let track of playlist; let i = index" (click)="viewStory(track, i)">
+        {{track?.title }}
+    </ion-item>
+  </ion-list>
+</ion-content>

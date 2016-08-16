@@ -1,0 +1,32 @@
+.elapsed-container {
+    position: relative; 
+    height: 3px; 
+    width: 100%;
+    padding: 0; 
+    margin: 0;
+}
+
+.percent-elapsed {
+    position: absolute;
+    line-height: 3px;
+    height: 3px;
+    background-color: color($colors, primary);
+}
+
+.percent-loaded {
+    position: absolute;
+    line-height: 3px;
+    height: 3px;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.controls-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.spinner-crescent circle {
+  
+  stroke: color($colors, light);
+}

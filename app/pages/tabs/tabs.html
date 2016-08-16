@@ -1,0 +1,6 @@
+<ion-tabs>
+  <audio-player *ngIf="currentTrack.audioUrl !== null"></audio-player>
+  <ion-tab [root]="tab1Root" tabTitle="On Now" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Latest" tabIcon="information-circle"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>
+</ion-tabs>
